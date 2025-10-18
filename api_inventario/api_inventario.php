@@ -6,19 +6,19 @@ header("Content-Type: application/json");
 
 include 'conexion.php';
 
-// Método HTTP usado
+
 $metodo = $_SERVER['REQUEST_METHOD'];
 
 switch ($metodo) {
     case 'GET':
-        // Si se envía un ID, muestra un producto específico
+        
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
             $sql = $conexion->prepare("SELECT * FROM productos WHERE id = ?");
             $sql->execute([$id]);
             echo json_encode($sql->fetch(PDO::FETCH_ASSOC));
         } else {
-            // Si no, muestra todos los productos
+    
             $sql = $conexion->query("SELECT * FROM productos");
             echo json_encode($sql->fetchAll(PDO::FETCH_ASSOC));
         }
@@ -76,4 +76,5 @@ switch ($metodo) {
         echo json_encode(["error" => "Método no permitido"]);
         break;
 }
+
 ?>
