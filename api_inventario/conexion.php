@@ -1,9 +1,9 @@
 <?php
 // conexion.php
-$host = "localhost"; // Servidor
-$user = "root";      // Usuario de MySQL (por defecto en XAMPP)
-$pass = "";          // Contraseña (vacía por defecto en XAMPP)
-$db = "inventario_tienda"; // Nombre de la base de datos
+$host = "localhost"; 
+$user = "root";      
+$pass = "";          
+$db = "inventario_tienda";
 
 try {
     $conexion = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pass);
@@ -13,4 +13,5 @@ try {
     echo json_encode(["error" => "Error de conexión: " . $e->getMessage()]);
     exit;
 }
+
 ?>
